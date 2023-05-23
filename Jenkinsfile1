@@ -1,12 +1,7 @@
 pipeline {
     agent any
     
-    stages {
-        stage('Checkout git') {
-            steps {
-              git 'https://github.com/sourabhpandey0806/insurance-repo.git'
-            }
-        }
+
         
         stage ('Build & JUnit Test') {
             steps {
