@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout git') {
             steps {
-              git 'https://github.com/praveensirvi1212/insurance-project.git'
+              git 'https://github.com/sourabhpandey0806/insurance-repo.git'
             }
         }
         
@@ -15,7 +15,7 @@ pipeline {
                 sh 'mvn clean package' 
             }
         }
-        
+        /*
         stage ('Docker Build') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
@@ -35,6 +35,7 @@ pipeline {
             }
         }
         
+      */  
     }
 }
 
