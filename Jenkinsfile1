@@ -7,11 +7,24 @@ pipeline {
     {
     
     
+    
 
         
         stage ('Build & JUnit Test') {
             steps {
                 sh 'mvn clean package' 
+            }
+        }
+        stage ('Docker Build') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-cred', passwordVariable: 'password', usernameVariable: 'username')]) {
+                    
+                    sh 'docker build -t sourabh0806/insure-me .'
+                    sh "docker login -u ${username} -p ${password} "
+                    sh 'docker push sourabh0806/insure-me'
+                    
+                    
+                }
             }
         }
          
